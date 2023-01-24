@@ -27,6 +27,12 @@
                   {{ row.nots }}
                 {% endif %}
               </td>
+              <td>
+                <button type="button" class="btn btn-brimary" data-bs-toggle="modal" data-bs-target="#deleteTimeSheet{{row.id}}">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+                {% include 'studens/modal_delete_timesheet.html' %}
+              </td>
           </tr>
           {% endfor %}
           <tr>

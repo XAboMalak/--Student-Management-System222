@@ -1,10 +1,9 @@
 from django.db import models
 from datetime import date
 from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model
 from django.urls import reverse
-from django.db.models import UniqueConstraint
-from django.conf import settings
+
+
 
 #######################################################
 year = 360
@@ -57,9 +56,9 @@ class Mission(models.Model):
     number_Of_Hours = models.IntegerField( verbose_name="عدد الساعات")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    updated_by = models.CharField(max_length=100, null=True, blank=True)
-    is_mission_close = models.BooleanField(default=False, verbose_name="الحالة")
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="الإنشاء بواسطة")
+    updated_by = models.CharField(max_length=100, null=True, blank=True, verbose_name="التعديل بواسطة")
+    is_mission_close = models.BooleanField(default=False, verbose_name="انتهت المهمة ؟")
 
     def __str__(self) -> str:
         return f"{self.project_Job_Type} {self.project_Name}"

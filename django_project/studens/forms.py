@@ -1,12 +1,10 @@
 from django import forms
 from .models import Projects, Mission, Stages, Job_Type, MissionTimeSheet
 import datetime
-from easy_select2 import select2_modelform_meta,Select2Multiple
+from easy_select2 import select2_modelform_meta
 
 
-# class SomeModelForm(forms.ModelForm,Select2Multiple):
-#     Meta = select2_modelform_meta(Mission)
-		# MyModelForm = select2_modelform(MyModel)
+
 class MissionForm(forms.ModelForm):
 	Meta = select2_modelform_meta(Mission)
 	# class Meta:

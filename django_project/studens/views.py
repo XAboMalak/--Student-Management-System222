@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from . models import Projects, Mission, Stages, Job_Type, Employee, MissionTimeSheet, Jobs, working_lisence_year,igama_year
+from django.urls import reverse_lazy
+from . models import Projects, Mission, Stages, Job_Type, MissionTimeSheet, working_lisence_year,igama_year,insurance,electric,cars
 import datetime
 from . forms import MissionForm, MissionTimeSheetForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -40,8 +39,7 @@ class MissionUpdatView(LoginRequiredMixin, UpdateView):
 class MissionDeleteView(LoginRequiredMixin, DeleteView):
 	model = Mission
 	success_url = "/"
-	# template_name = ".html"
-	template_name = "studens/edit.html"
+	# template_name = "studens/edit.html"
 	login_url = "login" # this for LoginRequiredMixin
 
 class ProjectCreateView(LoginRequiredMixin, CreateView):
@@ -86,7 +84,7 @@ def TimeSheet(request,id):
 	for item in conv_list:
 		cost = 0
 		for i in item:
-			cost+= (i[1]/30) + working_lisence_year + igama_year
+			cost+= (i[1]/30) + working_lisence_year + igama_year + insurance + electric + cars
 		hours.append(len(item)*8)
 		costlist.append(cost)
 	hours = f"{sum(hours):.0f}"
@@ -118,6 +116,14 @@ class TimeSheetCreateView(LoginRequiredMixin, CreateView):
 		# user = self.request.user
 		context["myid"] = self.kwargs['id_']
 		return context
+
+class TimeSheetDeleteView( DeleteView):
+	model = MissionTimeSheet
+	template_name = "studens/showTimeSheet.html"
+
+	def get_success_url(self):
+		post = self.object.mission 
+		return reverse_lazy('showTimeSheet', kwargs={'id': post.id})
 
 def testing(request):
 	lis = []

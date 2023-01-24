@@ -4,8 +4,7 @@ from . models import (Projects, Mission, Stages, Job_Type,
 from django.db import models
 from django.contrib.auth.models import User
 from easy_select2 import select2_modelform
-# from polls.models import Poll
-# Register your models here.
+
 
 myModels =[Projects, Stages, Job_Type, Employee,
   Jobs]
