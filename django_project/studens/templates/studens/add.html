@@ -1,0 +1,53 @@
+{% extends "studens/base.html" %}
+{% block title %}
+  اضافة مهمة جديدة
+{% endblock %}
+{% block body %}
+
+		<div class="row justify-content-center " >
+			<div class="col-6">
+				<div class="card border-info">
+				<div class="card-header text-center">
+					<i class="fa-solid fa-arrow-down-to-arc fa-lg"></i> <strong>تسجيل المهام</strong>
+				</div>
+				<div class="card-body ">
+					<form action="{% url 'add' %}" method="POST">
+						{% csrf_token %}
+						{% for field in form %}
+						<div class="form-group mb-3 row ">
+							<div class="col-3 text-center">{{ field.label_tag }}</div>
+							
+							<div class="col-4">
+								<div class="input-group ">
+								{{ field }}
+								</div>
+							</div>
+							
+							{% if field.html_name == "project_Name" %}
+								<a class="btn btn-secondary col-1" href="{% url 'add_Project' %}">
+									<i class="fa-solid fa-plus "></i>
+								</a>
+							{% elif field.html_name == "stages" %}
+								<a class="btn btn-secondary col-1" href="{% url 'add_Stages' %}">
+									<i class="fa-solid fa-plus "></i>
+								</a>
+							{% elif field.html_name == "project_Job_Type" %}
+								<a class="btn btn-secondary col-1" href="{% url 'add_Job_Type' %}">
+									<i class="fa-solid fa-plus "></i>
+								</a>
+							{% else %}
+								{{ pass }}
+							{% endif %}
+
+						</div>
+						{% endfor %}
+						<button type="submit" class="btn btn-primary ">اضافة</button>
+						<a href="{% url 'index' %}" class="btn btn-secondary m-3">الغاء</a>
+						
+					</form>
+				</div>
+				</div>
+			</div>
+		</div>
+
+{% endblock %}

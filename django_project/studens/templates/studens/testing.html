@@ -1,0 +1,37 @@
+{% extends "studens/base.html" %}
+
+{% block body %}
+<div class="table-container">
+  <h4>{{ id_ }} Missiom ID</h4>
+  <h4>{{ m }} name</h4>
+      <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>التاريخ</th>
+                <th>العمال</th>
+                <th>عدد الساعات</th>
+                <th>التكلفة</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for row in Mission  %}
+              <tr>
+                <th>{{ row.id }}</th>
+                <th>{{ row.date|date:"Y/m/d" }}</th>
+                  <td>{{ row.employee_format }}</td>
+                  <td>{{ row.employee_count }}</td>
+                  <td>{{ row.employee_cost }}</td>
+              </tr>
+              {% endfor %}
+              <tr>
+                <td>المجموع</td>
+                <td></td> 
+                <td>{{ hours }}</td>
+                <td>{{ costlist }}</td>
+              </tr>
+              <tbody>
+      </table>
+    </div>
+
+{% endblock %}

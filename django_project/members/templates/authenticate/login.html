@@ -1,0 +1,36 @@
+{% extends "studens/base.html" %}
+{% block title %}
+ دخول
+{% endblock %}
+{% block body %}
+		<div class="row justify-content-center " style="font-size:15px">
+			<div class="col-6">
+				<div class="card bg-light mb-3">
+					<div class="card-header text-center">
+						<i class="fa-solid fa-arrow-down-to-arc fa-lg"></i> <strong>تسجيل الدخول</strong>
+					</div>
+				<div class="card-body ">
+					<!-- Start LOGIN FORM ===============================-->
+					<form action="{% url 'login' %}" method="POST">
+						{% csrf_token %}
+					  <div class="mb-3">
+					    <label for="exampleInputEmail1" class="form-label">اسم المستخدم</label>
+					    <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
+					  </div>
+					  <div class="mb-3">
+					    <label for="exampleInputPassword1" class="form-label">كلمة المرور</label>
+					    <input type="password" class="form-control" name="password">
+					  </div>
+					  <button type="submit" class="btn btn-primary">موافق</button>
+					  <a href="{% url 'register' %}" class="btn btn-secondary m-3">مستخدم جديد</a>
+					</form>	
+					<!-- End LOGIN FORM	===============================-->
+					<p>
+						<a href="{% url 'password_reset' %}">Forgotten your password?</a>
+					</p>
+				</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}
+

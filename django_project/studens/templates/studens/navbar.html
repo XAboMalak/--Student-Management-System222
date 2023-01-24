@@ -1,0 +1,66 @@
+<!-- Navbar Start
+		=========================================================-->
+    {% now "Y" as current_year %}
+    {% now "m" as current_month %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index' %}"><i class="bi bi-amd fa-lg">  </i> مشروعات مؤسسة الصفار للمقاولات</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'add' %}">
+            <i class="fa-solid fa-plus fa-lg"></i> اضافة مهمة جديدة
+          </a>
+        </li>
+      
+        {% if user.is_authenticated %}
+        <li class="nav-item ">
+          <a class="nav-link active" href="{% url 'logout' %}">خروج</a>
+        </li>
+        <li class="nav-item">
+          <p class="nav-link active" >مرحبا {{ user.username }}</p>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'login' %}">دخول</a></li>
+        </li>
+        {% endif %}
+
+        <li class="nav-item">
+        <label class="nav-link" >مهام منفذة بالشهر</label>
+      </li>
+    </ul>
+    <form class="d-flex col-3" method="POST" action="{% url 'index' %}">
+      {% csrf_token %}     
+      <select class="form-control me-sm-2" name="input_month">
+          <option value={{ current_month }}>اختر الشهر</option>
+          <option value="1">يناير</option>
+          <option value="2">فبراير</option>
+          <option value="3">مارس</option>
+          <option value="4">ابريل</option>
+          <option value="5">مايو</option>
+          <option value="6">يونيو</option>
+          <option value="7">يوليو</option>
+          <option value="8">اغسطس</option>
+          <option value="9">سبتمبر</option>
+          <option value="10">اكتوبر</option>
+          <option value="11">نوفمبر</option>
+          <option value="12">ديسمبر</option>
+      </select>
+      <select class="form-control me-sm-2" name="input_year">
+          <option value={{ current_year }} selected>إختر السنة</option>
+          <option>{{ current_year|add:"-1" }}</option>
+          <option>{{ current_year|add:"-2" }}</option>
+          <option>{{ current_year|add:"-3" }}</option>
+          <option>{{ current_year|add:"-4" }}</option>
+      </select>
+      <button class="btn btn-secondary me-2" type="submit">عرض</button>
+    </form>
+  </div>
+</div>
+  </nav>
+<!-- Navbar End
+=========================================================-->

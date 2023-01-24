@@ -1,0 +1,47 @@
+{% extends "studens/base.html" %}
+{% block title %}
+يومية العمال
+{% endblock %}
+{% block body %}
+
+<h5>{{ title }}</h5>
+  <table class="table">
+        <thead>
+          <tr>
+            <th>التاريخ</th>
+            <th>العمال</th>
+            <th>عدد الساعات</th>
+            <th>التكلفة</th>
+            <th>ملاحظات</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for row in Mission %}
+          <tr>
+            <th>{{ row.date|date:"Y/m/d" }}</th>
+              <td>{{ row.employee_format }}</td>
+              <td>{{ row.employee_count }}</td>
+              <td>{{ row.employee_cost }}</td>
+              <td>
+                {% if row.nots %}
+                  {{ row.nots }}
+                {% endif %}
+              </td>
+          </tr>
+          {% endfor %}
+          <tr>
+            <td>المجموع</td>
+            <td></td> 
+            <td>{{ hours }}</td>
+            <td>{{ costlist }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="m-4">
+
+      <a class="btn btn-success" href="{% url 'addTimeSheet' id_ %}">
+        <i class="fa-solid fa-plus"></i>
+    </a>
+    </div>
+	
+{% endblock %}

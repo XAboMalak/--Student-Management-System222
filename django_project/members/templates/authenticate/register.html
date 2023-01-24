@@ -1,0 +1,31 @@
+{% extends "studens/base.html" %}
+{% block title %}
+ تسجيل جديد
+{% endblock %}
+{% block body %}
+	{% if form.errors %}
+		<div class="alert alert-dismissible alert-success text-center">
+  		<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  		<strong>يوجد خطاء في التسجيل</strong>
+		</div>
+    {% endif %}
+		<div class="row justify-content-center " style="font-size:15px">
+			<div class="col-6">
+				<div class="card bg-light mb-3">
+				<div class="card-header text-center">
+					<i class="fa-solid fa-arrow-down-to-arc fa-lg"></i> <strong>تسجيل</strong>
+				</div>
+					<div class="card-body ">
+						<!-- Start Registring FORM ===============================-->
+					<form action="{% url 'register' %}" method="POST" >
+						{% csrf_token %}
+						{{ form.as_p }}
+						<br>
+						<button type="submit" class="btn btn-primary">موافق</button>
+					</form>	
+						<!-- End Registring FORM ===============================-->
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "studens/base.html" %}
+{% block title %}
+اضافة يومية
+{% endblock %}
+{% block body %}
+
+		<div class="row justify-content-center " style="font-size:15px">
+			<div class="col-6">
+				<div class="card bg-light mb-3">
+				<div class="card-header text-center">
+					<i class="fa-solid fa-arrow-down-to-arc fa-lg"></i> <strong>اضافة يومية</strong>
+				</div>
+				<div class="card-body ">
+					<form action="" method="POST">
+						{% csrf_token %}
+						{{ form.as_p }}
+						
+						<button type="submit" class="btn btn-primary ">اضافة</button>
+						<a href="{% url 'showTimeSheet' myid %}" class="btn btn-secondary m-3">الغاء</a>
+						
+					</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	
+{% endblock %}

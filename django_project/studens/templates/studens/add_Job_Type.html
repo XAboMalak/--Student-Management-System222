@@ -1,0 +1,44 @@
+{% extends "studens/base.html" %}
+{% block title %}
+  اضافة نوع العمل
+{% endblock %}
+{% block body %}
+	
+	{% if success %}
+	<div class="alert alert-success text-center" role="alert">
+		تم اضافة نوع عمل جديد
+		<a href="{% url 'add' %}" class="alert-link">تسجل المهام</a>
+	</div>
+	{% else %}
+		<div class="row justify-content-center " style="font-size:15px">
+			<div class="col-6">
+				<div class="card bg-light mb-3">
+				<div class="card-header text-center">
+					<i class="fa-solid fa-arrow-down-to-arc fa-lg"></i> <strong>اضافة نوع العمل</strong>
+				</div>
+				<div class="card-body ">
+					<form action="{% url 'add_Job_Type' %}" method="POST">
+						{% csrf_token %}
+						{% for field in form %}
+						<div class="input-group mb-3 row ">
+							<div class="col-4 text-center">{{ field.label_tag }}</div>
+							
+							<div class="col-7">
+								<div class="input-group ">
+								{{ field }}
+								</div>
+							</div>
+
+						</div>
+						{% endfor %}
+						<button type="submit" class="btn btn-primary ">اضافة</button>
+						<a href="{% url 'add' %}" class="btn btn-secondary m-3">الغاء</a>
+						
+					</form>
+				</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+	
+{% endblock %}

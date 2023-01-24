@@ -1,0 +1,38 @@
+{% extends "studens/base.html" %}
+{% block title %}
+  تعديل علي مهمة منفذة
+{% endblock %}
+{% block body %}
+	
+
+
+		<div class="row justify-content-center " style="font-size:15px">
+			<div class="col-6">
+				<div class="card border-info mb-3">
+				<div class="card-header text-center m-4">
+					<i class="fa-solid fa-pen-to-square fa-lg"></i><strong> تعديل المهمة</strong>
+				</div>
+				<div class="card-body">
+					<form class="col-auto" action="" method="POST">
+						{% csrf_token %}
+						
+						{% for field in form %}
+						<div class="input-group mb-3 row ">
+							<div class="col-3 text-center">{{ field.label_tag }}</div>
+							<div class="col-5">
+								<div class="input-group">{{ field }}</div>
+							</div>
+						</div>
+						{% endfor %}
+						
+						<button type="submit" class="btn btn-primary ">تعديل</button>
+						<a href="{% url 'index' %}" class="btn btn-secondary m-3">الغاء</a>
+						
+					</form>
+				</div>
+				</div>
+			</div>
+		</div>
+
+	
+{% endblock %}

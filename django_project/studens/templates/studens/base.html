@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+	<link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/droid-arabic-kufi" type="text/css"/>
+	<title>{% block title %}برنامج ادارة المشاريع{% endblock %}</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" >
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %} ">
+	{% comment %} <link rel="stylesheet" href="{% static 'css/bulma.min.css' %} "> {% endcomment %}
+	{% comment %} <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/Flat and thick/bulmaswatch.min.css"> {% endcomment %}
+
+	<title>{% if form.instance.pk %}Edit {{ form.instance }}{% else %}Create Note{% endif%}</title>
+    {{ form.media.css }}
+    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
+    {{ form.media.js }}
+
+	<style>
+      body {
+        font-family: 'DroidArabicKufiRegular'; font-size: 15px; 
+      }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100" >
+	<!--Navbar-->
+	{% include 'studens/navbar.html' %}
+	<!--Navbar-->
+	<div class="container-fluid mt-4">
+		{% if messages %}
+		{% for i in messages %}
+			<div class="alert alert-dismissible alert-success text-center">
+			<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+			<strong>{{ i }}</strong>
+			</div>
+		{% endfor %}
+		{% endif %}
+
+		{% block body %}
+		
+		{% endblock %}
+	</div>
+	<br>
+	<br>
+	{% include 'studens/footer.html' %}
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
+</body>
+</html>
