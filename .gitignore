@@ -1,2 +1,4 @@
 /.vscode
 /help_.txt
+/.venv
+/ttest.py
