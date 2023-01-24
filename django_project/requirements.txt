@@ -1,0 +1,4 @@
+Django==3.2.16
+django-easy-select2==1.5.8
+django_debug_toolbar==3.8.1
+
