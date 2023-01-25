@@ -2,7 +2,4 @@ Django==3.2.16
 django-easy-select2==1.5.8
 django_debug_toolbar==3.8.1
 gunicorn==20.1.0
-<<<<<<< HEAD
 whitenoise==6.3.0
-=======
->>>>>>> f840c16ed03d18b122a67a702d9e516d41c64fd3
