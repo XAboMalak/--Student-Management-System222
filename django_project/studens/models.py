@@ -84,11 +84,8 @@ class Mission(models.Model):
         Hours = self.number_Of_Hours
         Q = self.quantity
         M3 = self.project_Job_Type.m3_day
-        try:
-            P_Ratio = (Q/(M3/2)*(8/Hours))*100
-            return f"{P_Ratio:.0f} %"
-        except:
-            return 0
+        P_Ratio = (Q/(M3/2)*(8/Hours))*100
+        return f"{P_Ratio:.0f} %"
 
     @property
     def project_Stage_format(self):
