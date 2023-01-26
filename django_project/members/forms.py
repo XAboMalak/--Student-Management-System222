@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 import datetime
 
 class RegisterUserForm(UserCreationForm):
-	email = forms.EmailField(label="البرييد الالكتروني", widget=forms.EmailInput(attrs={"class":"form-control"}))
+	email = forms.EmailField(label="البريد الالكتروني", widget=forms.EmailInput(attrs={"class":"form-control"}))
 	class Meta:
 		model = User
 		fields = ("username", "email", "password1", "password2")
@@ -14,3 +14,7 @@ class RegisterUserForm(UserCreationForm):
 		self.fields["username"].widget.attrs["class"] = "form-control"
 		self.fields["password1"].widget.attrs["class"] = "form-control"
 		self.fields["password2"].widget.attrs["class"] = "form-control"
+		
+		self.fields["username"].label = "إسم المستخدم"
+		self.fields["password1"].label = "كلمة المرور"
+		self.fields["password2"].label = "تأكيد كلمة المرور"
