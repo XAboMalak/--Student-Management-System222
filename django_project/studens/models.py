@@ -89,7 +89,7 @@ class Mission(models.Model):
             return f"{P_Ratio:.0f} %"
         except:
             return 0
-
+        
     @property
     def project_Stage_format(self):
         title =[]
