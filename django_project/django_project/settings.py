@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9x6(v+qk@s1cy@yww+%o%&pn*m5v@@4-)+mil0al+&tnfoy%9j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['alsaffar.up.railway.app','*']
 
@@ -87,11 +87,21 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'alsaffardb.sqlite3',
     }
 }
-
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': 'e8z0ENEsyoN8pteAMOo7',
+#         'HOST': 'containers-us-west-35.railway.app',
+#         'PORT': '7169'
+#     }
+# }
+# postgresql://postgres:e8z0ENEsyoN8pteAMOo7@containers-us-west-35.railway.app:7169/railway
+# postgresql://${{ PGUSER }}:${{ PGPASSWORD }}@${{ PGHOST }}:${{ PGPORT }}/${{ PGDATABASE }}
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
