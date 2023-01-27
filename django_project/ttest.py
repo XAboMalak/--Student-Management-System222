@@ -2,7 +2,7 @@ import datetime
 import os
 from pathlib import Path
 
-try:
-    print(0/2)
-except:
-    print("0")
+BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+print(BASE_DIR)
+print(STATIC_ROOT)
